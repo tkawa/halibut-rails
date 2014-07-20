@@ -1,4 +1,4 @@
-require "halibut/rails/version"
+require 'halibut/rails/version'
 
 module Halibut
   module Rails
