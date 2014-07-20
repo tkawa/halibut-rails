@@ -2,7 +2,8 @@ module Halibut
   module Rails
     class BuilderHandler
       def self.call(template)
-        %{ Halibut::Rails::TemplateEngine.new(#{template.source.inspect}).render(self, assigns.merge(local_assigns)) }
+        %{Halibut::Rails::ContextDelegator.setup(self); #{template.source}
+          Halibut::Rails::ContextDelegator.teardown(self)}
       end
     end
   end
