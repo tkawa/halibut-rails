@@ -2,8 +2,7 @@ module Halibut
   module Rails
     class BuilderHandler
       def self.call(template)
-        %{Halibut::Rails::ContextDelegator.setup(self); #{template.source}
-          Halibut::Rails::ContextDelegator.teardown(self)}
+        %{Halibut::Rails::ContextDelegator.around(self){ #{template.source} } }
       end
     end
   end
